@@ -29,7 +29,7 @@ function defineModelWConfig(
         {
             app: {
                 head: {
-                    titleTemplate: '%s - ${config.siteName}'
+                    titleTemplate: config.siteName,
                 },
                 meta: [
                     { charset: "utf-8" },
