@@ -76,7 +76,7 @@ function defineModelWConfig(
 
 export default defineModelWConfig({
     siteName: "Model W",
-    apiURL: "localhost:8000",
-    sentryDSN: "",
+    apiURL: process.env.API_URL,
+    sentryDSN: process.env.SENTRY_DSN,
     ENV: ""
 });
