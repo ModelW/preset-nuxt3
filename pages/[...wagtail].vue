@@ -11,11 +11,14 @@
 <script>
 import ServerTemplatedComponent from "~/components/ServerTemplatedComponent.vue";
 import Page from "~/components/wagtail/Page.vue";
-
+import Title1 from "~/components/blocks/Title1.vue";
+import InputText from "~/components/blocks/InputText.vue";
 /**
  * Put here all the components that you might want to render
  */
 const DEFS = {
+  Title1,
+  InputText
 };
 
 /**

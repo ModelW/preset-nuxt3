@@ -39,7 +39,7 @@ function defineModelWConfig(
                     },
                     { hid: "description", name: "description", content: "" },
                     { name: "format-detection", content: "telephone=no" },
-                ]
+                ],
             },
 
             routeRules: {
@@ -54,9 +54,9 @@ function defineModelWConfig(
 
             runtimeConfig: {
                 apiURL: config.apiURL,
-                serverTemplatedComponents: false,
                 public: {
                     sentryDSN: config.sentryDSN,
+                    serverTemplatedComponents: false,
                 },
                 ENV: config.ENV
             },

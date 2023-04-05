@@ -39,8 +39,10 @@
     );
     const asyncComponent = defineAsyncComponent<any>(async () => {
         try {
-            const componentPath = page.meta.type.replace(".", "/");
-            return allAsyncComponents[`./pages/${componentPath}.vue`]();
+            // Getting from allAsyncComponents the component we want to render
+            const componentPath = `./pages/${page.meta.type.replace(".", "/")}.vue`;
+            const componentFunction = allAsyncComponents[componentPath]
+            return componentFunction();
         } catch (e) {
             console.error(e);
             return import("./pages/LoadingError.vue");
