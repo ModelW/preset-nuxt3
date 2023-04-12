@@ -31,6 +31,7 @@ function defineModelWConfig(
                 head: {
                     titleTemplate: config.siteName,
                 },
+                // @ts-ignore
                 meta: [
                     { charset: "utf-8" },
                     {
