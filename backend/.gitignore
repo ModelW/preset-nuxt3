@@ -1,3 +1,4 @@
 images
 original_images
 */__pycache__/*
+.env
