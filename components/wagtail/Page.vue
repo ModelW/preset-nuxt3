@@ -1,6 +1,5 @@
 <template>
     <component :is="asyncComponent" v-bind="page" />
-    <button @click="throwError">Throw error</button>
 </template>
 
 <script setup lang="ts">
@@ -48,7 +47,4 @@
             return import("./pages/LoadingError.vue");
         }
     });
-    function throwError() {
-      throw new Error('Sentry Error');
-    }
 </script>
