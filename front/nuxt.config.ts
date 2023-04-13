@@ -19,6 +19,10 @@ interface ModelWConfig {
     apiURL?: string;
     sentryDSN?: string;
     ENV?: string;
+    charset?: string;
+    meta?: Array<any>;
+    backAlias?: string;
+    cmsAlias?: string;
 }
 
 function defineModelWConfig(
@@ -32,15 +36,7 @@ function defineModelWConfig(
                     titleTemplate: config.siteName,
                 },
                 // @ts-ignore
-                meta: [
-                    { charset: "utf-8" },
-                    {
-                        name: "viewport",
-                        content: "width=device-width, initial-scale=1",
-                    },
-                    { hid: "description", name: "description", content: "" },
-                    { name: "format-detection", content: "telephone=no" },
-                ],
+                meta: config.meta,
             },
 
             routeRules: {
@@ -55,11 +51,13 @@ function defineModelWConfig(
 
             runtimeConfig: {
                 apiURL: config.apiURL,
+                backAlias: config.backAlias,
+                cmsAlias: config.cmsAlias,
                 public: {
                     sentryDSN: config.sentryDSN,
                     serverTemplatedComponents: false,
                 },
-                ENV: config.ENV
+                ENV: config.ENV,
             },
 
             build: {},
@@ -76,8 +74,20 @@ function defineModelWConfig(
 }
 
 export default defineModelWConfig({
-    siteName: "Model W",
+    siteName: process.env.SITE_NAME,
     apiURL: process.env.API_URL,
     sentryDSN: process.env.SENTRY_DSN,
-    ENV: ""
+    ENV: process.env.ENV,
+    meta: [
+            // @ts-ignore
+            { charset: "utf-8" },
+            {
+                name: "viewport",
+                content: "width=device-width, initial-scale=1",
+            },
+            { hid: "description", name: "description", content: "" },
+            { name: "format-detection", content: "telephone=no" },
+        ],
+    backAlias: process.env.BACK_ALIAS,
+    cmsAlias: process.env.CMS_ALIAS
 });
