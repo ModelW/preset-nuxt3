@@ -21,6 +21,7 @@ interface ModelWConfig {
     ENV?: string;
     charset?: string;
     meta?: Array<any>;
+    moduleConfig?: Array<any>;
     backAlias?: string;
     cmsAlias?: string;
 }
@@ -65,8 +66,9 @@ function defineModelWConfig(
             modules: [
                 "nuxt-runtime-compiler",
                 "@model-w/axios",
+                "@model-w/sentry",
                 "@model-w/proxy",
-                "@model-w/sentry"
+                ...(config.moduleConfig ? config.moduleConfig : [])
             ]
         }
     );
@@ -79,7 +81,6 @@ export default defineModelWConfig({
     sentryDSN: process.env.SENTRY_DSN,
     ENV: process.env.ENV,
     meta: [
-            // @ts-ignore
             { charset: "utf-8" },
             {
                 name: "viewport",
@@ -89,5 +90,6 @@ export default defineModelWConfig({
             { name: "format-detection", content: "telephone=no" },
         ],
     backAlias: process.env.BACK_ALIAS,
-    cmsAlias: process.env.CMS_ALIAS
+    cmsAlias: process.env.CMS_ALIAS,
+    moduleConfig: [],
 });

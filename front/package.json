@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@model-w/axios": "^0.3.0",
-    "@model-w/proxy": "^0.1.2",
+    "@model-w/proxy": "^0.1.4",
     "@model-w/sentry": "^0.1.1",
     "@vuelidate/core": "^2.0.2",
     "@vuelidate/validators": "^2.0.2",
