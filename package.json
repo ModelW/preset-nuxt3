@@ -1,6 +1,6 @@
 {
   "name": "@model-w/preset-nuxt3",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ModelW/preset-nuxt3.git"
@@ -16,7 +16,7 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "nuxt": "~3.2.3",
     "@model-w/axios": "~0.3.0",
     "@model-w/proxy": "~0.1.4",
