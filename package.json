@@ -1,6 +1,6 @@
 {
     "name": "@model-w/preset-nuxt3",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ModelW/preset-nuxt3.git"
@@ -9,6 +9,7 @@
         "url": "https://github.com/ModelW/preset-nuxt3/issues"
     },
     "description": "Preset of Nuxt3 for ModelW",
+    "homepage": "https://github.com/ModelW/preset-nuxt3#readme",
     "main": "nuxt.config.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -33,16 +34,6 @@
         "vue3-toastify": "~0.1.6",
         "sass": "~1.62.0",
         "sass-loader": "~13.2.2"
-    },
-    "devDependencies": {
-        "@babel/eslint-parser": "~7.21.3",
-        "@nuxtjs/eslint-config": "~6.0.1",
-        "@nuxtjs/eslint-module": "~3.1.0",
-        "eslint": "~7.32.0",
-        "eslint-config-prettier": "~8.8.0",
-        "eslint-plugin-nuxt": "~2.0.0",
-        "eslint-plugin-vue": "~7.20.0",
-        "prettier": "~2.8.7"
     },
     "keywords": [
         "Nuxt3",
