@@ -1,6 +1,6 @@
 {
     "name": "@model-w/preset-nuxt3",
-    "version": "0.1.8",
+    "version": "0.2.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ModelW/preset-nuxt3.git"
@@ -22,16 +22,16 @@
         "nuxt": "~3.4.x"
     },
     "dependencies": {
-        "@model-w/axios": "~0.3.0",
-        "@model-w/proxy": "~0.1.4",
-        "@model-w/sentry": "~0.1.1",
+        "@model-w/axios": "~0.4.4",
+        "@model-w/proxy": "~0.3.0",
+        "@model-w/sentry": "~0.3.0",
+        "@model-w/toast": "~0.2.4",
         "@vuelidate/core": "~2.0.2",
         "@vuelidate/validators": "~2.0.2",
         "defu": "~6.1.2",
         "jsdom": "~21.1.1",
         "nuxt-runtime-compiler": "~1.2.2",
         "vite-svg-loader": "~4.0.0",
-        "vue3-toastify": "~0.1.6",
         "sass": "~1.62.0",
         "sass-loader": "~13.2.2"
     },

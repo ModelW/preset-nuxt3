@@ -5,4 +5,4 @@ with the following the documentation available in the [Model-W](https://github.c
 
 ### Documentation
 
-[✨ **Documentation is there** ✨](http://modelw-nuxt3-preset.rtfd.io/)
+[✨ **Documentation is there** ✨](http://model-w-nuxt3-preset.rtfd.io/)

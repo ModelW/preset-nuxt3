@@ -1,44 +1,73 @@
 export interface ModelWConfig {
     siteName?: string;
-    apiURL?: string;
-    sentryDSN?: string;
-    ENV?: string;
+    apiUrl?: string;
+    baseUrl?: string;
+    sentryDsn?: string;
+    sentryEnvironment?: string;
+    environment?: string;
     charset?: string;
     meta?: Array<any>;
     moduleConfig?: Array<any>;
     backAlias?: string;
     cmsAlias?: string;
+    proxyFilters?: Array<any>;
+    proxyContext?: Array<any>;
+
 }
 
 export function defineModelWConfig(config: ModelWConfig) {
     return defineNuxtConfig({
         app: {
             head: {
-                titleTemplate: config.siteName,
+                titleTemplate: config.siteName || "Model W",
             },
-            // @ts-ignore
             meta: config.meta,
         },
 
-        routeRules: {
-            '/': {
-                prerender: true,
-                cors: true
+        runtimeConfig: {
+            apiUrl: config.apiUrl || "http://localhost:3000",
+            public: {
+                serverTemplatedComponents: false,
+                baseUrl: config.baseUrl || ""
             },
-            '/*': {
-                cors: true
-            }
         },
 
-        runtimeConfig: {
-            apiURL: config.apiURL,
-            backAlias: config.backAlias,
-            cmsAlias: config.cmsAlias,
-            public: {
-                sentryDSN: config.sentryDSN,
-                serverTemplatedComponents: false,
+        proxy: {
+            context: [
+                config.backAlias || "/back",
+                config.cmsAlias ||"/cms",
+                ...(config.proxyContext || [])
+            ],
+            options: {
+                target: config.apiUrl,
+                changeOrigin: true,
             },
-            ENV: config.ENV,
+            filters: [
+                {
+                    header: /x-reach-api:.+/,
+                },
+                {
+                    path: "/back",
+                },
+                {
+                    path: "/cms",
+                },
+                {
+                    path: /^\/cms\/pages\/[^/]+\/edit\/preview\/$/,
+                    useProxy: false,
+                },
+                {
+                    path: /^\/cms\/pages\/add\/[^/]+\/[^/]+\/[^/]+\/preview\/$/,
+                    method: /HEAD|OPTIONS|GET/,
+                    useProxy: false,
+                },
+                ...(config.proxyFilters || [])
+            ],
+          },
+
+        sentry: {
+            dsn: config.sentryDsn || "",
+            environment: config.sentryEnvironment || ""
         },
 
         build: {},
@@ -48,7 +77,8 @@ export function defineModelWConfig(config: ModelWConfig) {
             "@model-w/axios",
             "@model-w/sentry",
             "@model-w/proxy",
-            ...(config.moduleConfig ? config.moduleConfig : []),
+            "@model-w/toast",
+            ...(config.moduleConfig || []),
         ]
     })
 }
