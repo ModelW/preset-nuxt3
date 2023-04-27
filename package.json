@@ -23,18 +23,15 @@
         "node": "18.x"
     },
     "peerDependencies": {
-        "vue": "3.2.x",
-        "nuxt": "3.4.x",
         "@model-w/axios": "0.x || 1.x",
         "@model-w/proxy": "0.x || 1.x",
         "@model-w/sentry": "1.x",
         "@vuelidate/core": "2.0.x",
         "@vuelidate/validators": "2.0.x",
+        "nuxt": "3.4.x",
+        "sass": "1.62.x",
         "vite-svg-loader": "4.0.x",
-        "sass": "1.62.x"
-    },
-    "dependencies": {
-        "defu": "6.1.x"
+        "vue": "3.2.x"
     },
     "keywords": [
         "Nuxt3",
@@ -47,5 +44,8 @@
     "contributors": [
         "Laurent Treguier",
         "Ivan Lorenzo"
-    ]
+    ],
+    "dependencies": {
+        "defu": "^6.1.2"
+    }
 }
