@@ -27,5 +27,4 @@ jobs:
 
       - name: Publish package
         run: |
-          npm run dev:build
           npm publish

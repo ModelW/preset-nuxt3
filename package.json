@@ -1,6 +1,6 @@
 {
     "name": "@model-w/preset-nuxt3",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ModelW/preset-nuxt3.git"
@@ -10,30 +10,28 @@
     },
     "description": "Preset of Nuxt3 for ModelW",
     "homepage": "https://github.com/ModelW/preset-nuxt3#readme",
-    "main": "nuxt.config.ts",
+    "main": "index.ts",
+    "files": [
+        "index.ts",
+        "README.md",
+        "package.json"
+    ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "engines": {
-        "node": ">=16.0.0"
+        "node": "18.x"
     },
     "peerDependencies": {
-        "vue": "~3.2.47",
-        "nuxt": "~3.4.x"
-    },
-    "dependencies": {
-        "@model-w/axios": "~0.4.4",
-        "@model-w/proxy": "~0.3.0",
-        "@model-w/sentry": "~0.3.0",
-        "@model-w/toast": "~0.2.4",
-        "@vuelidate/core": "~2.0.2",
-        "@vuelidate/validators": "~2.0.2",
-        "defu": "~6.1.2",
-        "jsdom": "~21.1.1",
-        "nuxt-runtime-compiler": "~1.2.2",
-        "vite-svg-loader": "~4.0.0",
-        "sass": "~1.62.0",
-        "sass-loader": "~13.2.2"
+        "@model-w/axios": "0.x || 1.x",
+        "@model-w/proxy": "0.x || 1.x",
+        "@model-w/sentry": "1.x",
+        "@vuelidate/core": "2.0.x",
+        "@vuelidate/validators": "2.0.x",
+        "nuxt": "3.4.x",
+        "sass": "1.62.x",
+        "vite-svg-loader": "4.0.x",
+        "vue": "3.2.x"
     },
     "keywords": [
         "Nuxt3",
@@ -46,5 +44,8 @@
     "contributors": [
         "Laurent Treguier",
         "Ivan Lorenzo"
-    ]
+    ],
+    "dependencies": {
+        "defu": "^6.1.2"
+    }
 }

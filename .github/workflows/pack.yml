@@ -18,7 +18,6 @@ jobs:
 
       - name: Build package
         run: |
-          npm run dev:build
           npm pack
 
       - uses: actions/upload-artifact@v3
