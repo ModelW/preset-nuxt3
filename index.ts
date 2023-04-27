@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from "nuxt/config";
+
 export interface ModelWConfig {
     siteName?: string;
     apiUrl?: string;
@@ -12,7 +14,6 @@ export interface ModelWConfig {
     cmsAlias?: string;
     proxyFilters?: Array<any>;
     proxyContext?: Array<any>;
-
 }
 
 export function defineModelWConfig(config: ModelWConfig) {
@@ -28,15 +29,15 @@ export function defineModelWConfig(config: ModelWConfig) {
             apiUrl: config.apiUrl || "http://localhost:3000",
             public: {
                 serverTemplatedComponents: false,
-                baseUrl: config.baseUrl || ""
+                baseUrl: config.baseUrl || "",
             },
         },
 
         proxy: {
             context: [
                 config.backAlias || "/back",
-                config.cmsAlias ||"/cms",
-                ...(config.proxyContext || [])
+                config.cmsAlias || "/cms",
+                ...(config.proxyContext || []),
             ],
             options: {
                 target: config.apiUrl,
@@ -61,13 +62,13 @@ export function defineModelWConfig(config: ModelWConfig) {
                     method: /HEAD|OPTIONS|GET/,
                     useProxy: false,
                 },
-                ...(config.proxyFilters || [])
+                ...(config.proxyFilters || []),
             ],
-          },
+        },
 
         sentry: {
             dsn: config.sentryDsn || "",
-            environment: config.sentryEnvironment || ""
+            environment: config.sentryEnvironment || "",
         },
 
         build: {},
@@ -79,6 +80,6 @@ export function defineModelWConfig(config: ModelWConfig) {
             "@model-w/proxy",
             "@model-w/toast",
             ...(config.moduleConfig || []),
-        ]
-    })
+        ],
+    });
 }
