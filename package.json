@@ -1,6 +1,6 @@
 {
     "name": "@model-w/preset-nuxt3",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ModelW/preset-nuxt3.git"
