@@ -1,15 +1,28 @@
 {
     "name": "@model-w/preset-nuxt3",
     "version": "1.0.0",
+    "type": "module",
+    "description": "Preset of Nuxt3 for ModelW",
+    "license": "WTFPL",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ModelW/preset-nuxt3.git"
     },
+    "homepage": "https://github.com/ModelW/preset-nuxt3#readme",
     "bugs": {
         "url": "https://github.com/ModelW/preset-nuxt3/issues"
     },
-    "description": "Preset of Nuxt3 for ModelW",
-    "homepage": "https://github.com/ModelW/preset-nuxt3#readme",
+    "author": "Rémy Sanchez (@xowap)",
+    "contributors": [
+        "Laurent Treguier",
+        "Ivan Lorenzo"
+    ],
+    "keywords": [
+        "nuxt3",
+        "nuxt3-preset",
+        "model-w",
+        "modelw"
+    ],
     "main": "index.ts",
     "files": [
         "index.ts",
@@ -33,18 +46,6 @@
         "vite-svg-loader": "4.0.x",
         "vue": "3.2.x"
     },
-    "keywords": [
-        "Nuxt3",
-        "modelw",
-        "model-w",
-        "Nuxt3-preset"
-    ],
-    "author": "Rémy Sanchez (@xowap)",
-    "license": "WTFPL",
-    "contributors": [
-        "Laurent Treguier",
-        "Ivan Lorenzo"
-    ],
     "dependencies": {
         "defu": "^6.1.2"
     }
