@@ -225,12 +225,6 @@ export function defineModelWConfig(
                     header: /x-reach-api:.+/,
                 },
                 {
-                    path: `/${backAlias}`,
-                },
-                {
-                    path: `/${cmsAlias}`,
-                },
-                {
                     path: previewEditRegex,
                     method: /^(?!POST$).*/,
                     useProxy: false,
@@ -239,6 +233,12 @@ export function defineModelWConfig(
                     path: previewAddRegex,
                     method: /^(?!POST$).*/,
                     useProxy: false,
+                },
+                {
+                    path: `/${backAlias}`,
+                },
+                {
+                    path: `/${cmsAlias}`,
                 },
                 ...(config.proxyFilters || []),
             ],
