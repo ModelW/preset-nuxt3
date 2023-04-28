@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 // @ts-ignore
 import { defineNuxtConfig } from "nuxt/config";
 import { defu } from "defu";
@@ -137,17 +138,66 @@ class EnvManager {
 }
 
 export interface ModelWConfig {
+    /**
+     * Site name for display purposes
+     */
     siteName?: string;
+
+    /**
+     * URL of the API, defaults to API_URL env var
+     */
     apiUrl?: string;
+
+    /**
+     * Arbitrary data to put in runtime config
+     */
     runtimeConfig?: Extract<NuxtConfig, "runtimeConfig">;
+
+    /**
+     * DSN for Sentry, defaults to SENTRY_DSN env var
+     */
     sentryDsn?: string;
+
+    /**
+     * Environment name, especially for Sentry
+     */
     environment?: string;
+
+    /**
+     * Raw "app" setting, will be merged with defaults
+     */
     app?: Extract<NuxtConfig, "app">;
+
+    /**
+     * Raw "head" setting from the "app" setting, will be merged with defaults
+     */
     head?: Extract<Extract<NuxtConfig, "app">, "head">;
+
+    /**
+     * Additional list of modules you'd like to have
+     */
     moduleConfig?: Array<any>;
+
+    /**
+     * URL prefix of the backend (without initial /), defaults to back
+     */
     backAlias?: string;
+
+    /**
+     * URL prefix of the CMS admin (without initial /), defaults to cms
+     */
     cmsAlias?: string;
+
+    /**
+     * Additional rules for the proxy module
+     */
     proxyFilters?: Array<any>;
+
+    /**
+     * Set to false to disable the runtime template compilation (which makes
+     * the bundle lighter)
+     */
+    enableRuntimeTemplate?: boolean;
 }
 
 /**
@@ -207,6 +257,8 @@ export function defineModelWConfig(
             defaultValue: sentryDsn ? undefined : "",
         });
 
+    const enableRuntimeTemplate = config.enableRuntimeTemplate !== false;
+
     const generatedConfig: NuxtConfig = {
         app,
 
@@ -225,12 +277,6 @@ export function defineModelWConfig(
                     header: /x-reach-api:.+/,
                 },
                 {
-                    path: `/${backAlias}`,
-                },
-                {
-                    path: `/${cmsAlias}`,
-                },
-                {
                     path: previewEditRegex,
                     method: /^(?!POST$).*/,
                     useProxy: false,
@@ -239,6 +285,12 @@ export function defineModelWConfig(
                     path: previewAddRegex,
                     method: /^(?!POST$).*/,
                     useProxy: false,
+                },
+                {
+                    path: `/${backAlias}`,
+                },
+                {
+                    path: `/${cmsAlias}`,
                 },
                 ...(config.proxyFilters || []),
             ],
@@ -255,6 +307,21 @@ export function defineModelWConfig(
             "@model-w/proxy",
             ...(config.moduleConfig || []),
         ],
+
+        ...(enableRuntimeTemplate
+            ? {
+                  vite: {
+                      resolve: {
+                          alias: {
+                              vue: resolve(
+                                  __dirname,
+                                  "node_modules/vue/dist/vue.esm-bundler.js"
+                              ),
+                          },
+                      },
+                  },
+              }
+            : {}),
     };
 
     return defineNuxtConfig(generatedConfig);
