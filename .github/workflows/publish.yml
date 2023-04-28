@@ -27,4 +27,4 @@ jobs:
 
       - name: Publish package
         run: |
-          npm publish
+          npm publish --access public
