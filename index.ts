@@ -1,4 +1,3 @@
-import { resolve } from "node:path";
 // @ts-ignore
 import { defineNuxtConfig } from "nuxt/config";
 import { defu } from "defu";
@@ -313,9 +312,8 @@ export function defineModelWConfig(
                   vite: {
                       resolve: {
                           alias: {
-                              vue: resolve(
-                                  __dirname,
-                                  "node_modules/vue/dist/vue.esm-bundler.js"
+                              vue: require.resolve(
+                                  "vue/dist/vue.esm-bundler.js"
                               ),
                           },
                       },
