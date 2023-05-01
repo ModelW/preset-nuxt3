@@ -309,14 +309,8 @@ export function defineModelWConfig(
 
         ...(enableRuntimeTemplate
             ? {
-                  vite: {
-                      resolve: {
-                          alias: {
-                              vue: require.resolve(
-                                  "vue/dist/vue.esm-bundler.js"
-                              ),
-                          },
-                      },
+                  experimental: {
+                      runtimeVueCompiler: true,
                   },
               }
             : {}),
