@@ -235,8 +235,10 @@ export function defineModelWConfig(
     });
     const apiUrl =
         config.apiUrl ||
-        env.get({ name: "API_URL", buildDefault: "http://localhost" });
+        env.get({ name: "NUXT_API_URL", buildDefault: "http://localhost" });
 
+    const proxyTarget = config.apiUrl ||
+        env.get({ name: "NUXT_PROXY_OPTIONS_TARGET", buildDefault: "http://localhost" });
     const backAlias = config.backAlias || "back";
     const cmsAlias = config.cmsAlias || "wubba-lubba-dub-dub";
 
@@ -248,11 +250,11 @@ export function defineModelWConfig(
     );
 
     const sentryDsn =
-        config.sentryDsn || env.get({ name: "SENTRY_DSN", defaultValue: "" });
-    const environment =
+        config.sentryDsn || env.get({ name: "NUXT_PUBLIC_SENTRY_DSN", defaultValue: "" });
+    const sentryEnvironment =
         config.environment ||
         env.get({
-            name: "ENVIRONMENT",
+            name: "NUXT_PUBLIC_SENTRY_ENVIRONMENT",
             defaultValue: sentryDsn ? undefined : "",
         });
 
@@ -264,12 +266,12 @@ export function defineModelWConfig(
         runtimeConfig: defu(config.runtimeConfig || {}, {
             apiUrl,
             proxy: {
-                options: { target: apiUrl },
+                options: { target: proxyTarget },
             },
             public: {
                 sentry: {
                     dsn: sentryDsn,
-                    environment,
+                    environment: sentryEnvironment,
                 },
             },
         }),
@@ -306,7 +308,7 @@ export function defineModelWConfig(
 
         sentry: {
             dsn: sentryDsn,
-            environment: environment,
+            environment: sentryEnvironment,
         } as SentryOptions,
 
         modules: [
