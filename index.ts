@@ -263,6 +263,15 @@ export function defineModelWConfig(
 
         runtimeConfig: defu(config.runtimeConfig || {}, {
             apiUrl,
+            proxy: {
+                options: { target: apiUrl },
+            },
+            public: {
+                sentry: {
+                    dsn: sentryDsn,
+                    environment,
+                },
+            },
         }),
 
         proxy: {
