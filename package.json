@@ -1,6 +1,6 @@
 {
     "name": "@model-w/preset-nuxt3",
-    "version": "1.0.3",
+    "version": "2023.7.0",
     "type": "module",
     "description": "Preset of Nuxt3 for ModelW",
     "license": "WTFPL",
@@ -36,15 +36,15 @@
         "node": "18.x"
     },
     "peerDependencies": {
-        "@model-w/axios": "0.x || 1.x",
-        "@model-w/proxy": "0.x || 1.x",
+        "@model-w/axios": "1.x",
+        "@model-w/proxy": "2.x",
         "@model-w/sentry": "1.x",
         "@vuelidate/core": "2.0.x",
         "@vuelidate/validators": "2.0.x",
-        "nuxt": "3.4.x",
-        "sass": "1.62.x",
+        "nuxt": "3.6.x",
+        "sass": "1.63.x",
         "vite-svg-loader": "4.0.x",
-        "vue": "3.2.x"
+        "vue": "3.3.x"
     },
     "dependencies": {
         "defu": "^6.1.2"
