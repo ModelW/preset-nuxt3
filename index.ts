@@ -237,8 +237,12 @@ export function defineModelWConfig(
         config.apiUrl ||
         env.get({ name: "NUXT_API_URL", buildDefault: "http://localhost" });
 
-    const proxyTarget = config.apiUrl ||
-        env.get({ name: "NUXT_PROXY_OPTIONS_TARGET", buildDefault: "http://localhost" });
+    const proxyTarget =
+        config.apiUrl ||
+        env.get({
+            name: "NUXT_PROXY_OPTIONS_TARGET",
+            buildDefault: "http://localhost",
+        });
     const backAlias = config.backAlias || "back";
     const cmsAlias = config.cmsAlias || "wubba-lubba-dub-dub";
 
@@ -250,7 +254,8 @@ export function defineModelWConfig(
     );
 
     const sentryDsn =
-        config.sentryDsn || env.get({ name: "NUXT_PUBLIC_SENTRY_DSN", defaultValue: "" });
+        config.sentryDsn ||
+        env.get({ name: "NUXT_PUBLIC_SENTRY_DSN", defaultValue: "" });
     const sentryEnvironment =
         config.environment ||
         env.get({
@@ -258,7 +263,9 @@ export function defineModelWConfig(
             defaultValue: sentryDsn ? undefined : "",
         });
 
-    const enableRuntimeTemplate = config.enableRuntimeTemplate !== false;
+    const vue: Extract<NuxtConfig, "vue"> = {
+        runtimeCompiler: config.enableRuntimeTemplate !== false,
+    };
 
     const generatedConfig: NuxtConfig = {
         app,
@@ -318,13 +325,7 @@ export function defineModelWConfig(
             ...(config.moduleConfig || []),
         ],
 
-        ...(enableRuntimeTemplate
-            ? {
-                  experimental: {
-                      runtimeVueCompiler: true,
-                  },
-              }
-            : {}),
+        vue,
     };
 
     return defineNuxtConfig(generatedConfig);
