@@ -238,7 +238,7 @@ export function defineModelWConfig(
         env.get({ name: "NUXT_API_URL", buildDefault: "http://localhost" });
 
     const proxyTarget =
-        config.apiUrl ||
+        apiUrl ||
         env.get({
             name: "NUXT_PROXY_OPTIONS_TARGET",
             buildDefault: "http://localhost",
