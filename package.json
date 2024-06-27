@@ -41,8 +41,8 @@
         "@model-w/sentry": "1.x",
         "@vuelidate/core": "2.0.x",
         "@vuelidate/validators": "2.0.x",
-        "nuxt": "3.10.x",
-        "sass": "1.71.x",
+        "nuxt": "3.12.x",
+        "sass": "1.77.x",
         "vite-svg-loader": "5.1.x",
         "vue": "3.4.x"
     },
