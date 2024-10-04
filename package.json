@@ -1,6 +1,6 @@
 {
     "name": "@model-w/preset-nuxt3",
-    "version": "2024.7.0",
+    "version": "2024.10.0",
     "type": "module",
     "description": "Preset of Nuxt3 for ModelW",
     "license": "WTFPL",
