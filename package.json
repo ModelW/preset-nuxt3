@@ -33,7 +33,7 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "engines": {
-        "node": "20.x"
+        "node": "22.x"
     },
     "peerDependencies": {
         "@model-w/axios": "1.x",
@@ -41,8 +41,8 @@
         "@model-w/sentry": "1.x",
         "@vuelidate/core": "2.0.x",
         "@vuelidate/validators": "2.0.x",
-        "nuxt": "3.13.x",
-        "sass": "1.79.x",
+        "nuxt": "3.14.x",
+        "sass": "1.83.x",
         "vite-svg-loader": "5.1.x",
         "vue": "3.5.x"
     },
