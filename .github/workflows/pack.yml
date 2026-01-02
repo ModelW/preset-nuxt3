@@ -3,23 +3,23 @@ name: "Build package"
 on: push
 
 jobs:
-  pack:
-    name: Build package
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    pack:
+        name: Build package
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22.x'
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: "24.x"
 
-      - name: Install dependencies
-        run: npm ci
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Build package
-        run: |
-          npm pack
+            - name: Build package
+              run: |
+                  npm pack
 
-      - uses: actions/upload-artifact@v4
-        with:
-          path: '*.tgz'
+            - uses: actions/upload-artifact@v6
+              with:
+                  path: "*.tgz"
