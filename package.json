@@ -30,10 +30,13 @@
         "package.json"
     ],
     "scripts": {
+        "dev": "nuxi dev",
+        "build": "nuxi build",
+        "start": "nuxi start",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "engines": {
-        "node": "22.x"
+        "node": "24.x"
     },
     "peerDependencies": {
         "@model-w/axios": "1.x",
@@ -41,8 +44,8 @@
         "@model-w/sentry": "1.x",
         "@vuelidate/core": "2.0.x",
         "@vuelidate/validators": "2.0.x",
-        "nuxt": "3.19.x",
-        "sass": "1.93.x",
+        "nuxt": "3.20.x",
+        "sass": "1.97.x",
         "vite-svg-loader": "5.1.x",
         "vue": "3.5.x"
     },
