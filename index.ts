@@ -246,6 +246,9 @@ export function defineModelWConfig(
     const backAlias = config.backAlias || "back";
     const cmsAlias = config.cmsAlias || "wubba-lubba-dub-dub";
 
+    const previewSnippetRegex = new RegExp(
+        `^/${cmsAlias}/snippets/[^/]+/[^/]+/preview(/[^/]+)?/$`
+    );
     const previewEditRegex = new RegExp(
         `^/${cmsAlias}/pages/[^/]+/edit/preview/$`
     );
@@ -290,6 +293,7 @@ export function defineModelWConfig(
             },
             forwardHost: true,
             filters: [
+                ...(config.proxyFilters || []),
                 {
                     header: /x-reach-api:.+/,
                 },
@@ -304,12 +308,16 @@ export function defineModelWConfig(
                     useProxy: false,
                 },
                 {
+                    path: previewSnippetRegex,
+                    method: /^(?!POST$).*/,
+                    useProxy: false
+                },
+                {
                     path: `/${backAlias}`,
                 },
                 {
                     path: `/${cmsAlias}`,
                 },
-                ...(config.proxyFilters || []),
             ],
         } as ProxyOptions,
 
