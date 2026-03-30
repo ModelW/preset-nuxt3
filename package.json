@@ -1,6 +1,6 @@
 {
     "name": "@model-w/preset-nuxt3",
-    "version": "2026.1.0",
+    "version": "2026.4.0",
     "type": "module",
     "description": "Preset of Nuxt3 for ModelW",
     "license": "WTFPL",
@@ -44,8 +44,8 @@
         "@model-w/sentry": "1.x",
         "@vuelidate/core": "2.0.x",
         "@vuelidate/validators": "2.0.x",
-        "nuxt": "3.20.x",
-        "sass": "1.97.x",
+        "nuxt": "3.21.x",
+        "sass": "1.98.x",
         "vite-svg-loader": "5.1.x",
         "vue": "3.5.x"
     },
